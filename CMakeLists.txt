@@ -17,7 +17,11 @@ function(add_build_setup name CUDART_MODE cudart_mode CUBLAS_MODE cublas_mode)
 
   target_compile_features(${name}_compute PUBLIC cxx_std_17)
   target_compile_features(${name}_construct PUBLIC cxx_std_17)
-  target_link_libraries(${name} PRIVATE ${name}_construct ${name}_compute)
+
+  # Order needs to be construct first, or via `PUBLIC` on `compute`
+  target_link_libraries(${name}_compute PUBLIC ${name}_construct)
+
+  target_link_libraries(${name} PRIVATE ${name}_compute)
 
   string(TOLOWER ${cublas_mode} cublas_mode)
   string(TOLOWER ${cudart_mode} cudart_mode)
