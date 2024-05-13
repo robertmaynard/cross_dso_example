@@ -1,10 +1,11 @@
 #include "helper.h"
+#include "helper_impl.h"
 
 void compute(cublasHandle_t &h, std::size_t size, double *A, double *B,
              double &result);
 
-void cublas_user_a(handle_cacher &h, double *A, double *B, std::size_t size) {
-  std::cout << "calling cublas_user_a" << std::endl;
+void cublas_user_c(cublas_resource &h, double *A, double *B, std::size_t size) {
+  std::cout << "calling cublas_user_c" << std::endl;
   double result = 0.0;
 
   /* step 3: compute */

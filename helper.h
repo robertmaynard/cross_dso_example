@@ -58,9 +58,9 @@ private:
 
 static const cuda_stream_view cuda_stream_per_thread{cudaStreamPerThread};
 
-struct handle_cacher {
-  handle_cacher();
-  ~handle_cacher();
+struct cublas_resource {
+  cublas_resource();
+  ~cublas_resource();
 
   cublasHandle_t &get_resource();
   cudaStream_t get_stream();

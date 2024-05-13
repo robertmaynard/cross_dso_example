@@ -2,11 +2,10 @@
 #include "helper.h"
 #include <vector>
 
-handle_cacher make_handle(char);
+cublas_resource make_handle(char);
 
-void cublas_user_a(handle_cacher &h, double* A, double* B, std::size_t size);
-void cublas_user_b(handle_cacher &h, double* A, double* B, std::size_t size);
-void cublas_user_c(handle_cacher &h, double* A, double* B, std::size_t size);
+void cublas_user_b(cublas_resource &h, double* A, double* B, std::size_t size);
+void cublas_user_c(cublas_resource &h, double* A, double* B, std::size_t size);
 
 int main(int argc, char** argv) {
   char mode = '0';
@@ -30,7 +29,6 @@ int main(int argc, char** argv) {
                              cudaMemcpyHostToDevice));
 
   auto h = make_handle(mode);
-  cublas_user_a(h, d_A, d_B, A.size());
   cublas_user_b(h, d_A, d_B, A.size());
   cublas_user_c(h, d_A, d_B, A.size());
 

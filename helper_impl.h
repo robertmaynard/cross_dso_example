@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-handle_cacher::handle_cacher() {
+cublas_resource::cublas_resource() {
   m_stream_view = cuda_stream_per_thread;
   auto stat = cublasCreate(&m_cublas_res);
   if (stat != CUBLAS_STATUS_SUCCESS) {
@@ -12,9 +12,9 @@ handle_cacher::handle_cacher() {
     printf("CUBLAS stream association failed\n");
   }
 }
-handle_cacher::~handle_cacher() { cublasDestroy(m_cublas_res); }
+cublas_resource::~cublas_resource() { cublasDestroy(m_cublas_res); }
 
-cublasHandle_t &handle_cacher::get_resource() {
+cublasHandle_t &cublas_resource::get_resource() {
   if (m_init) {
     cudaFree(0);
   }
@@ -35,10 +35,10 @@ cublasHandle_t &handle_cacher::get_resource() {
   return m_cublas_res;
 }
 
-cudaStream_t handle_cacher::get_stream() { return m_stream_view.value(); }
+cudaStream_t cublas_resource::get_stream() { return m_stream_view.value(); }
 
-handle_cacher make_handle(char mode) {
-  handle_cacher h;
+cublas_resource make_handle(char mode) {
+  cublas_resource h;
 
   if (mode == '1' || mode == '3') {
     h.m_init = true;
