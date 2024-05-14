@@ -1,5 +1,4 @@
-
-#include <iostream>
+#include "helper.h"
 
 cublas_resource::cublas_resource() {
   m_stream_view = cuda_stream_per_thread;

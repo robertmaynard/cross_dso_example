@@ -1,13 +1,5 @@
 
 
-cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
-
-
-project(MyProj VERSION 0.1.0 LANGUAGES CXX C)
-
-find_package(CUDAToolkit REQUIRED)
-
-
 function(add_build_setup name CUDART_MODE cudart_mode CUBLAS_MODE cublas_mode)
   set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -56,7 +48,6 @@ add_build_setup(STATIC_SHARED CUDART_MODE STATIC CUBLAS_MODE SHARED)
 add_build_setup(SHARED_STATIC CUDART_MODE SHARED CUBLAS_MODE STATIC)
 add_build_setup(SHARED_SHARED CUDART_MODE SHARED CUBLAS_MODE SHARED)
 
-enable_testing()
 add_test_setups(STATIC_STATIC)
 add_test_setups(STATIC_SHARED)
 add_test_setups(SHARED_STATIC)

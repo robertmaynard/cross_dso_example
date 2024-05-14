@@ -4,8 +4,7 @@
 
 cublas_resource make_handle(char);
 
-void cublas_user_b(cublas_resource &h, double* A, double* B, std::size_t size);
-void cublas_user_c(cublas_resource &h, double* A, double* B, std::size_t size);
+void cublas_user(cublas_resource &h, double* A, double* B, std::size_t size);
 
 int main(int argc, char** argv) {
   char mode = '0';
@@ -29,8 +28,7 @@ int main(int argc, char** argv) {
                              cudaMemcpyHostToDevice));
 
   auto h = make_handle(mode);
-  cublas_user_b(h, d_A, d_B, A.size());
-  cublas_user_c(h, d_A, d_B, A.size());
+  cublas_user(h, d_A, d_B, A.size());
 
   return 0;
 }
