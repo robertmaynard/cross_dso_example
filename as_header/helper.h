@@ -37,7 +37,6 @@
     }                                                                          \
   }
 
-
 class cuda_stream_view {
 public:
   constexpr cuda_stream_view() = default;
@@ -71,7 +70,7 @@ private:
 
 static const cuda_stream_view cuda_stream_per_thread{cudaStreamPerThread};
 
-struct cublas_resource {
+struct __attribute__((visibility("default"))) cublas_resource {
   cublas_resource();
   ~cublas_resource();
 

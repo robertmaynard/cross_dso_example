@@ -16,6 +16,7 @@
 #include "helper.h"
 #include "helper_impl.h"
 
+__attribute__ ((visibility ("default")))
 void cublas_user_dot(cublas_resource &h, double *A, double *B,
                      std::size_t size) {
   std::cout << "calling cublas_user_dot" << std::endl;

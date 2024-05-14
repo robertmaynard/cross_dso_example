@@ -34,7 +34,7 @@ cublasHandle_t &cublas_resource::get_resource() {
 
 cudaStream_t cublas_resource::get_stream() { return m_stream_view.value(); }
 
-cublas_resource make_handle() {
+__attribute__ ((visibility ("default"))) cublas_resource make_handle() {
   cublas_resource h;
   return h;
 }

@@ -11,6 +11,7 @@
 # or implied. See the License for the specific language governing permissions and limitations under
 # the License.
 # =============================================================================
+set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
 
 function(add_build_setup name CUDART_MODE cudart_mode CUBLAS_MODE cublas_mode)
   set(CMAKE_POSITION_INDEPENDENT_CODE ON)
